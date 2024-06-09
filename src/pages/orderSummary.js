@@ -67,7 +67,7 @@ const OrderSummary = ({ orderInfo, totalAmount }) => {
           </table>
           <h4>總金額: ${totalAmount}</h4>
         </section>
-        <button onClick={handleOrderConfirmation}>訂單確認</button>
+        <button onClick={handleOrderConfirmation}>訂單送出</button>
       </div>
     </div>
   );

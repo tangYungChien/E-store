@@ -16,7 +16,7 @@ const ProductGrid = ({ products, currentCategory }) => {
               <Link to={`/product/${product.id}`}>
                 <div className="productImg">
                   <img
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.name}
                     className="product-image"
                   />

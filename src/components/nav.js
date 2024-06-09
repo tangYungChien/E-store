@@ -1,14 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "../components/CartIcon";
+import { useState } from "react";
+import { useEffect, useRef } from "react";
 
-const nav = ({ filterProducts, itemCount }) => {
+const Nav = ({ filterProducts, itemCount }) => {
+  //處理手機版nav點選後收起
+  const navRef = useRef(null);
+  useEffect(() => {
+    const handleClick = () => {
+      const checkbox = document.getElementById("switch");
+      if (checkbox) {
+        checkbox.checked = false;
+      }
+    };
+
+    const navLinks = navRef.current.querySelectorAll("a");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleClick);
+    });
+
+    return () => {
+      navLinks.forEach((link) => {
+        link.removeEventListener("click", handleClick);
+      });
+    };
+  }, []);
   return (
     <div className="banner">
       <div className="logo">
         <img src={require("../picture/logo1.jpg")} alt="logo" />
       </div>
-      <nav>
+      <nav ref={navRef}>
+        <input type="checkbox" id="switch" />
+        <label for="switch">
+          <img src={require("../picture/burger.png")} alt="burger" />
+        </label>
         <ul>
           <li>
             <Link to="/" className="home" onClick={() => filterProducts("all")}>
@@ -44,18 +71,18 @@ const nav = ({ filterProducts, itemCount }) => {
             <Link to="/about">關於品牌</Link>
           </li>
         </ul>
+        <div className="icons">
+          <Link to="/login" className="icon">
+            <img src={require("../picture/person.png")} alt="person" />
+          </Link>
+          <Link to="/cart" className="icon">
+            {/* <img src={require("../picture/tote-bag.png")} alt="bag" /> */}
+            <CartIcon itemCount={itemCount} />
+          </Link>
+        </div>
       </nav>
-      <div className="icons">
-        <Link to="/login" className="icon">
-          <img src={require("../picture/person.png")} alt="person" />
-        </Link>
-        <Link to="/cart" className="icon">
-          {/* <img src={require("../picture/tote-bag.png")} alt="bag" /> */}
-          <CartIcon itemCount={itemCount} />
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default nav;
+export default Nav;

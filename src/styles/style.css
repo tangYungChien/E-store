@@ -32,8 +32,8 @@ ul {
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 20px;
+  justify-content: center;
+  padding: 0px 10px;
   box-shadow: 0 10px 6px -6px #d7d7d7;
   position: sticky;
   top: 0;
@@ -46,11 +46,9 @@ ul {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  margin-left: 50px;
 }
 .banner ul {
   display: flex;
-  padding: 0px;
 }
 .banner ul li {
   padding: 5px;
@@ -73,14 +71,14 @@ ul {
 
 nav {
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 nav ul li {
   margin: 0;
@@ -152,7 +150,8 @@ nav ul li a:hover {
 }
 .product-card .productImg img {
   aspect-ratio: 1/1;
-  width: 250px; /* 也可以換成任何你想要的寬度 */
+  width: 250px;
+  height: 250px; /* 也可以換成任何你想要的寬度 */
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -178,20 +177,23 @@ nav ul li a:hover {
 .product-detail h1 {
   font-size: 2em;
   margin-bottom: 10px;
+  color: #5f5f5f;
 }
 .product-detail .product-image {
   width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 }
-.product-detail p {
-  margin: 10px 0;
+.product-detail h2 {
+  margin: 5px 0;
+  color: #545454;
 }
 .product-detail .product-colors {
   margin: 20px 0;
 }
 .product-detail .product-colors h3 {
   margin-bottom: 10px;
+  color: #5f5f5f;
 }
 .product-detail .product-colors .color-button {
   width: 50px;
@@ -261,8 +263,43 @@ nav ul li a:hover {
   background-color: #e68a00;
 }
 
+.product-images {
+  position: relative;
+}
+.product-images img {
+  aspect-ratio: 1/1;
+  width: 200px;
+  height: 200px; /* 也可以換成任何你想要的寬度 */
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 8px;
+}
+
+.prev-button,
+.next-button {
+  background-color: rgba(185, 185, 184, 0.979);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.prev-button:hover,
+.next-button:hover {
+  background-color: #ccc;
+}
+
+.next-button {
+  right: 0;
+}
+
 .login-container {
-  max-width: 400px;
+  max-width: 350px;
   height: 50vh;
   margin: 100px auto;
   padding: 20px;
@@ -566,4 +603,156 @@ nav ul li a:hover {
 }
 .orderSummaryContainer button:hover {
   background-color: #41a4a1;
+}
+
+/* 隱藏 checkbox */
+nav input {
+  display: none;
+}
+
+nav input:checked ~ ul {
+  max-height: 500px;
+}
+
+/* 漢堡按鈕 */
+nav label {
+  float: right;
+  padding-right: 50px;
+  line-height: 50px;
+}
+nav label img {
+  width: 30px;
+  vertical-align: middle;
+}
+
+/* RWD for mobile devices */
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    display: flex;
+  }
+  .banner .logo img {
+    margin-left: 0;
+    width: 90px;
+  }
+  .banner .icons {
+    padding: 10px;
+    justify-content: flex-end;
+    transition: opacity 0.2s ease;
+  }
+  .banner .icons img {
+    width: 30px;
+  }
+  .banner nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .banner nav ul {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .banner nav ul li {
+    padding: 0px;
+  }
+  .banner nav ul li:not(:last-child)::after {
+    display: none;
+  }
+  .banner nav ul li:not(:last-child) {
+    margin-right: 0;
+  }
+  .banner nav label.burger-icon {
+    align-self: flex-end;
+    margin-right: 10px;
+  }
+  #switch:checked ~ .icons {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .product-grid .product-card {
+    padding: 5px 0px;
+  }
+  .product-grid .product-card h3 {
+    font-size: medium;
+    margin-bottom: 0px;
+  }
+  .product-grid .product-card .productImg img {
+    width: 150px;
+    height: 150px;
+  }
+  .product-detail {
+    justify-content: center;
+    margin: 20px;
+  }
+  .product-detail h1 {
+    font-size: larger;
+  }
+  .login-container {
+    max-width: 300px;
+  }
+  .cart-container {
+    padding: 20px;
+  }
+  .cart-container p {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .cart-container h2 {
+    margin-top: 10px;
+  }
+  .cart-container table thead th {
+    font-size: small;
+  }
+  .cart-container table tbody td {
+    padding: 10px;
+    font-size: small;
+  }
+  .cart-container table tbody .item-details p {
+    font-size: small;
+  }
+  .cart-container table tbody .item-details .item-image img {
+    width: 40px;
+    height: 40px;
+  }
+  .cart-container .quantity-controls button {
+    padding: 3px 8px;
+    font-size: 14px;
+    margin: 0 3px;
+  }
+  .cart-container .quantity-controls span {
+    font-size: 14px;
+    margin: 0 3px;
+  }
+  .cart-container .total {
+    margin-top: 10px;
+    font-size: 1em;
+  }
+  .cart-container .total button {
+    padding: 8px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .checkout-container,
+  .orderSummaryContainer {
+    padding: 20px;
+  }
+  .about {
+    position: relative;
+    padding: 0px;
+  }
+  .about img {
+    width: 90%;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  nav label {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

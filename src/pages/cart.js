@@ -24,7 +24,7 @@ const Cart = ({ cart, updateQuantity, totalAmount }) => {
               <tr>
                 <th>商品</th>
                 <th>款式</th>
-                <th>單件價格</th>
+                <th>單件價</th>
                 <th>數量</th>
                 <th>小計</th>
               </tr>
@@ -35,7 +35,7 @@ const Cart = ({ cart, updateQuantity, totalAmount }) => {
                   <td>
                     <div className="item-details">
                       <div className="item-image">
-                        <img src={item.image} alt={item.name} />
+                        <img src={item.images[0]} alt={item.name} />
                       </div>
                       <div className="item-name">
                         <p>{item.name}</p>

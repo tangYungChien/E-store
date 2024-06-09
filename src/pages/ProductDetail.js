@@ -11,6 +11,7 @@ const ProductDetail = ({ addToCart }) => {
   const [selectedColor, setSelectedColor] = useState(
     product.colors ? product.colors[0] : null
   );
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const handleAddToCart = () => {
     // 處理加入購物車的邏輯
     addToCart(product, quantity, selectedColor);
@@ -21,10 +22,34 @@ const ProductDetail = ({ addToCart }) => {
     // 處理立即購買的邏輯
     alert(`立即購買 ${product.name}`);
   };
+  const handleNextImage = () => {
+    setSelectedImageIndex(
+      (prevIndex) => (prevIndex + 1) % product.images.length
+    );
+  };
+
+  const handlePrevImage = () => {
+    setSelectedImageIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + product.images.length) % product.images.length
+    );
+  };
   return (
     <div className="product-detail">
       <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} className="product-image" />
+      <div className="product-images">
+        <button className="prev-button" onClick={handlePrevImage}>
+          &lt;
+        </button>
+        <img
+          src={product.images[selectedImageIndex]}
+          alt={product.name}
+          className="product-image"
+        />
+        <button className="next-button" onClick={handleNextImage}>
+          &gt;
+        </button>
+      </div>
       <h2> $ {product.price}</h2>
 
       {product.colors && (
@@ -55,9 +80,9 @@ const ProductDetail = ({ addToCart }) => {
       <button className="add-to-cart" onClick={handleAddToCart}>
         加入購物車
       </button>
-      <button className="buy-now" onClick={handleBuyNow}>
+      {/* <button className="buy-now" onClick={handleBuyNow}>
         立即購買
-      </button>
+      </button> */}
     </div>
   );
 };
