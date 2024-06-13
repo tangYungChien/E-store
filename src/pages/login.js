@@ -1,16 +1,26 @@
 import React, { useState } from "react";
-// import "./Login.scss";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Login = () => {
+const Login = ({ setMemberName }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 處理登入邏輯，例如發送 API 請求
-    alert(`登入成功: ${username}`);
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        username,
+        password,
+      });
+      alert(response.data.message);
+      setMemberName(username);
+      navigate("/member");
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
-
   return (
     <div className="login-container">
       <h2>會員登入</h2>
@@ -37,6 +47,7 @@ const Login = () => {
         </div>
         <button type="submit">登入</button>
       </form>
+      <button onClick={() => navigate("/register")}>註冊會員</button>
     </div>
   );
 };

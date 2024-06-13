@@ -4,7 +4,7 @@ import CartIcon from "../components/CartIcon";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
 
-const Nav = ({ filterProducts, itemCount }) => {
+const Nav = ({ filterProducts, itemCount, memberName }) => {
   //處理手機版nav點選後收起
   const navRef = useRef(null);
   useEffect(() => {
@@ -72,7 +72,7 @@ const Nav = ({ filterProducts, itemCount }) => {
           </li>
         </ul>
         <div className="icons">
-          <Link to="/login" className="icon">
+          <Link to={memberName ? "/member" : "/login"} className="icon">
             <img src={require("../picture/person.png")} alt="person" />
           </Link>
           <Link to="/cart" className="icon">

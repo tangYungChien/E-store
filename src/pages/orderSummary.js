@@ -1,16 +1,50 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-const OrderSummary = ({ orderInfo, totalAmount }) => {
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+const OrderSummary = ({ orderInfo, totalAmount, memberName, setCart }) => {
   const navigate = useNavigate();
   if (!orderInfo) {
     return <p>沒有訂單資料</p>;
   }
 
-  const handleOrderConfirmation = () => {
-    navigate("/");
-    window.location.reload();
-    alert("訂單已送出，謝謝您的訂購!");
+  const handleOrderConfirmation = async () => {
+    const now = new Date();
+    const currentDate = `${now.getFullYear()}-${(now.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${now.getDate().toString().padStart(2, "0")}`;
+
+    const currentTime = `${now.getHours().toString().padStart(2, "0")}:${now
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+
+    const orderTime = `${currentDate} ${currentTime}`;
+
+    try {
+      // 將訂單資料送到後端
+      const response = await axios.post("http://localhost:5000/order", {
+        customerInfo: orderInfo.customerInfo,
+        shippingInfo: orderInfo.shippingInfo.delivery,
+        paymentInfo: orderInfo.paymentInfo.payment,
+        cart: orderInfo.cart,
+        totalAmount: totalAmount,
+        orderTime: orderTime,
+        memberName: memberName,
+      });
+
+      if (response.status === 201) {
+        // 如果成功，導航到首頁
+        setCart([]);
+        navigate("/");
+        alert("訂單已送出，謝謝您的訂購!");
+      } else {
+        // 如果有錯誤，顯示警示訊息給使用者
+        alert("發生錯誤。");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("發生錯誤，請稍後再試。");
+    }
   };
 
   return (
@@ -37,6 +71,7 @@ const OrderSummary = ({ orderInfo, totalAmount }) => {
         </section>
         <section>
           <h3>購買商品</h3>
+
           <table>
             <thead>
               <tr>

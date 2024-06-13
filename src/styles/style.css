@@ -605,6 +605,83 @@ nav ul li a:hover {
   background-color: #41a4a1;
 }
 
+.memberPage {
+  background-color: #f9f9f9;
+}
+.memberPage .memberOrder {
+  min-height: 100vh;
+  max-width: 600px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.memberPage .memberOrder h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.memberPage .memberOrder h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.memberPage .memberOrder .order {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.memberPage .memberOrder .order p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+.memberPage .memberOrder .order p.order-id {
+  font-weight: bold;
+  color: #555;
+}
+.memberPage .memberOrder .order p.order-time, .memberPage .memberOrder .order p.order-total {
+  font-size: 0.9rem;
+  color: #666;
+}
+.memberPage .memberOrder .order section {
+  margin-top: 20px;
+}
+.memberPage .memberOrder .order section h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #444;
+}
+.memberPage .memberOrder .order section p {
+  font-size: 1rem;
+  color: #555;
+}
+.memberPage .memberOrder .order table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.memberPage .memberOrder .order table thead {
+  background-color: #f2f2f2;
+}
+.memberPage .memberOrder .order table thead th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  text-align: left;
+}
+.memberPage .memberOrder .order table tbody tr td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+.memberPage .memberOrder .order table tbody tr td .item-details {
+  display: flex;
+  align-items: center;
+}
+.memberPage .memberOrder .order table tbody tr td .item-details .item-name {
+  margin-left: 10px;
+}
+
 /* 隱藏 checkbox */
 nav input {
   display: none;
