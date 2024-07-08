@@ -327,9 +327,10 @@ $product-card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 //登入頁面
-.login-container {
+.login-container,
+.register-container {
   max-width: 350px;
-  height: 50vh;
+  height: auto;
   margin: 100px auto;
   padding: 20px;
   border: 1px solid #ccc;

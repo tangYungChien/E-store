@@ -298,9 +298,10 @@ nav ul li a:hover {
   right: 0;
 }
 
-.login-container {
+.login-container,
+.register-container {
   max-width: 350px;
-  height: 50vh;
+  height: auto;
   margin: 100px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -308,28 +309,33 @@ nav ul li a:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-.login-container h2 {
+.login-container h2,
+.register-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
-.login-container .form-group {
+.login-container .form-group,
+.register-container .form-group {
   margin-bottom: 15px;
 }
-.login-container .form-group label {
+.login-container .form-group label,
+.register-container .form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #333;
 }
-.login-container .form-group input {
+.login-container .form-group input,
+.register-container .form-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
-.login-container button {
+.login-container button,
+.register-container button {
   width: 100%;
   margin-top: 20px;
   padding: 10px;
@@ -341,7 +347,8 @@ nav ul li a:hover {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.login-container button:hover {
+.login-container button:hover,
+.register-container button:hover {
   background-color: rgb(89, 173, 173);
 }
 

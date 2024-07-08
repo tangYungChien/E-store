@@ -1,6 +1,6 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs"); //密碼的加密處理
+const jwt = require("jsonwebtoken"); //用戶身份驗證
 const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
@@ -18,7 +18,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 // Flash middleware
 app.use(flash());
 
@@ -42,7 +41,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 });
-
+//pre("save", async function (next) { ... }) 是 Mongoose中間件，表示在保存之前執行的函數。
+//檢查密碼欄位是否被修改過，如果沒有被修改，則調用 next() 並退出中間件。
+//this 代表即將被保存的用戶文檔
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();
@@ -165,7 +166,6 @@ router.post("/order", async (req, res) => {
       memberName,
     });
     await newOrder.save();
-
     // 返回成功與否
     res.status(201).json({ message: "訂單提交成功" });
   } catch (err) {
@@ -178,7 +178,7 @@ router.post("/order", async (req, res) => {
 router.get("/orders/:memberName", async (req, res) => {
   const { memberName } = req.params;
   try {
-    const orders = await Order.find({ memberName }); // 假設使用 Mongoose
+    const orders = await Order.find({ memberName });
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: "Error fetching orders" });

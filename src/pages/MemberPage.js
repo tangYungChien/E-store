@@ -4,8 +4,6 @@ import axios from "axios";
 const MemberPage = ({ memberName }) => {
   const [orders, setOrders] = useState([]);
 
-  const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -18,7 +16,7 @@ const MemberPage = ({ memberName }) => {
         );
         setOrders(sortedOrders);
       } catch (error) {
-        setError("Error fetching orders");
+        console.error("Error fetching orders");
       }
     };
 
@@ -27,9 +25,6 @@ const MemberPage = ({ memberName }) => {
     }
   }, [memberName]);
 
-  if (error) {
-    return <div>{error}</div>;
-  }
   return (
     <div style={{ minHeight: "100vh" }} className="memberPage">
       <div className="memberOrder">

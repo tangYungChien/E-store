@@ -1,6 +1,5 @@
 import React from "react";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Badge, Avatar, Space } from "antd";
+import { Badge, Space } from "antd";
 
 const CartIcon = ({ itemCount }) => (
   <Space size="middle">

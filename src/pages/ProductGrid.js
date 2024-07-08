@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductGrid = ({ products, currentCategory }) => {
   return (
     <div style={{ minHeight: "100vh" }}>
       <div className="product-grid">
-        {console.log({ products })}
         {products
           .filter(
             (product) =>

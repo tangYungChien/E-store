@@ -43,7 +43,7 @@ const OrderSummary = ({ orderInfo, totalAmount, memberName, setCart }) => {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("發生錯誤，請稍後再試。");
+      alert("伺服器發生錯誤。");
     }
   };
 

@@ -2,10 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import products from "../components/Allproducts";
 import { useState } from "react";
-import useCart from "../components/useCart";
 
 const ProductDetail = ({ addToCart }) => {
-  const { productId } = useParams();
+  const { productId } = useParams(); //:productId獲取路由參數
   const product = products.find((p) => p.id == productId);
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(
@@ -17,11 +16,7 @@ const ProductDetail = ({ addToCart }) => {
     addToCart(product, quantity, selectedColor);
     alert(`已將${quantity}個${selectedColor} ${product.name} 加入購物車`);
   };
-
-  const handleBuyNow = () => {
-    // 處理立即購買的邏輯
-    alert(`立即購買 ${product.name}`);
-  };
+  //用餘數概念操控圖片變換
   const handleNextImage = () => {
     setSelectedImageIndex(
       (prevIndex) => (prevIndex + 1) % product.images.length
@@ -80,9 +75,6 @@ const ProductDetail = ({ addToCart }) => {
       <button className="add-to-cart" onClick={handleAddToCart}>
         加入購物車
       </button>
-      {/* <button className="buy-now" onClick={handleBuyNow}>
-        立即購買
-      </button> */}
     </div>
   );
 };

@@ -2,11 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Cart = ({ cart, updateQuantity, totalAmount }) => {
-  // const totalAmount = cart.reduce(
-  //   (acc, item) => acc + item.price * item.quantity,
-  //   0
-  // );
-
   return (
     <div className="cart-container" style={{ minHeight: "100vh" }}>
       <div className="checkout-steps">
@@ -44,7 +39,6 @@ const Cart = ({ cart, updateQuantity, totalAmount }) => {
                   </td>
                   <td>{item.color}</td>
                   <td>${item.price}</td>
-                  {/* <td>{item.quantity}</td> */}
                   <td>
                     <QuantityControls
                       item={item}
@@ -72,7 +66,7 @@ const Cart = ({ cart, updateQuantity, totalAmount }) => {
 // QuantityControls 组件用於控制商品數量的增减
 const QuantityControls = ({ item, updateQuantity }) => {
   const handleDecrease = () => {
-    const newQuantity = Math.max(item.quantity - 1, 0);
+    const newQuantity = Math.max(item.quantity - 1, 0); //確保 newQuantity 不會小於 0
     updateQuantity(item.id, newQuantity);
   };
 

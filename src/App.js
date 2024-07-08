@@ -16,30 +16,28 @@ import OrderSummary from "./pages/orderSummary";
 import "./styles/style.css";
 import Footer from "./components/Footer";
 
-// 引入產品
 function App() {
-  const [currentCategory, setCurrentCategory] = useState("all");
+  // 定義狀態，用於存儲當前的產品類別、購物車內容、訂單訊息和會員名稱
+  const [currentCategory, setCurrentCategory] = useState("all"); //用於nav產品分類
   const [cart, setCart] = useState([]);
   const [orderInfo, setOrderInfo] = useState(null);
   const [memberName, setMemberName] = useState("");
-
+  // 根據選中的類別更新當前類別狀態
   const filterProducts = (category) => {
     setCurrentCategory(category);
   };
-
+  // 路由變化時滾動到頁面頂部
   const ScrollToTop = () => {
-    const { pathname } = useLocation();
-
+    const { pathname } = useLocation(); //鉤子返回當前URL的資訊
     useEffect(() => {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0); // 當 pathname 改變時滾動到頁面頂部
     }, [pathname]);
-
-    return null;
+    return null; // 不渲染任何內容
   };
 
-  // 通過傳遞 cart 和 setCart 到 useCart 來使用它
+  // 通過傳遞 cart 和 setCart 到 useCart 來使用它，並將 addToCart函數提出使用
   const { addToCart } = useCart(cart, setCart);
-
+  // 購物車頁中更新購物車中商品數量
   const updateQuantity = (itemId, newQuantity) => {
     const updatedCart = cart
       .map((item) => {
@@ -55,11 +53,11 @@ function App() {
       .filter((item) => item !== null); // 過濾掉為null的商品
     setCart(updatedCart);
   };
+  // 計算購物車中商品的總金額，reduce對陣列中的每個元素進行累積操作(acc累加器)
   const totalAmount = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  console.log(memberName);
 
   return (
     <BrowserRouter>
