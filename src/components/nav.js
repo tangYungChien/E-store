@@ -72,11 +72,10 @@ const Nav = ({ filterProducts, itemCount }) => {
           </li>
         </ul>
         <div className="icons">
-          <Link to="/login" className="icon">
+          <Link to="/" className="icon">
             <img src={require("../picture/person.png")} alt="person" />
           </Link>
           <Link to="/cart" className="icon">
-            {/* <img src={require("../picture/tote-bag.png")} alt="bag" /> */}
             <CartIcon itemCount={itemCount} />
           </Link>
         </div>
