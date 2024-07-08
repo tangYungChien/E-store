@@ -34,7 +34,7 @@ function App() {
     return null;
   };
 
-  // 通过傳遞 cart 和 setCart 到 useCart 来使用它
+  // 通過傳遞 cart 和 setCart 到 useCart 来使用它
   const { addToCart } = useCart(cart, setCart);
 
   const updateQuantity = (itemId, newQuantity) => {
@@ -44,12 +44,12 @@ function App() {
           if (newQuantity > 0) {
             return { ...item, quantity: newQuantity };
           } else {
-            return null; // 数量为0时返回null，以便在下一步过滤掉
+            return null;
           }
         }
         return item;
       })
-      .filter((item) => item !== null); // 过滤掉为null的商品
+      .filter((item) => item !== null);
     setCart(updatedCart);
   };
   const totalAmount = cart.reduce(
@@ -73,7 +73,6 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
         <Route
           path="/cart"
           element={
