@@ -33,6 +33,8 @@
 
 ### 訂單管理
 - 用戶可以提交訂單，且可以查詢該用戶的歷史訂單。
+  
+![image](https://github.com/tangYungChien/E-store/blob/Add-backend/store-Order.JPG)
 
 ## 技術棧
 
