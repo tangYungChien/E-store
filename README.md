@@ -1,7 +1,14 @@
 # 貳拾飾 
 
 貳拾飾是一個專門銷售飾品的購物網站，讓用戶能夠輕鬆地瀏覽、選擇並購買商品。專案採用 React 框架開發前端，並結合 Node.js 的 Express 框架和 MongoDB 資料庫，實現產品展示、用戶認證、購物車、訂單管理等核心功能。
-(https://e-store-liard.vercel.app/)
+
+ [貳拾飾](https://e-store-liard.vercel.app/) (因平台限制後端尚未部屬)
+ 
+![image](https://github.com/tangYungChien/E-store/blob/Add-backend/twentyFour_demo.JPG)
+
+
+
+
 
 ## 前端功能
 
